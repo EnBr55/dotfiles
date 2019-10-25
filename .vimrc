@@ -6,8 +6,8 @@ set clipboard=unnamedplus
 let g:javascript_plugin_jsdoc = 1
 
 " Tabs and shiftwidth
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 " use onedark color scheme, but keep terminal background color
 if (has("autocmd") && !has("gui_running"))
