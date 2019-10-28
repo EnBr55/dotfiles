@@ -98,6 +98,9 @@ alias testing='cd ~/Documents/Programming/Testing && rm -r ~/Documents/Programmi
 alias uni='cd ~/Documents/University/Courses/Units'
 alias haguichi='sudo systemctl start logmein-hamachi.service && haguichi'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# Open new terminal in same location
+alias nt='urxvt &'
+alias unlock_the_secrets_of_the_universe='nohup evince ~/Documents/University/Courses/Units/PHYS1902/textbook.pdf & kill -9 $PPID'
 # Example aliases 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
