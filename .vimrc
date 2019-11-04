@@ -4,6 +4,7 @@ filetype plugin indent on
 set number relativenumber
 set clipboard=unnamedplus
 let g:javascript_plugin_jsdoc = 1
+let mapleader = " "
 
 " Tabs and shiftwidth
 set tabstop=2
