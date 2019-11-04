@@ -19,6 +19,8 @@ if (has("autocmd") && !has("gui_running"))
 endif
 colorscheme onedark
 
+" Autocompile .tex files whenever we write to them
+autocmd BufWritePost *.tex Dispatch! latexmk % -pdf
 
 " Key maps
 
@@ -29,6 +31,7 @@ inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
+" Make explore commands look better
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
