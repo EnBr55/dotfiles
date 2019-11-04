@@ -30,7 +30,7 @@
 *color15: #f1efee
 
 URxvt.intensityStyles:	false
-URxvt.background:       [65]#000005
+URxvt.background:       [45]#200040
 URxvt.depth:		32
 URxvt.font:		xft:FiraCode-Regular:size=11,xft:Noto Emoji
 URxvt.scrollBar:	false

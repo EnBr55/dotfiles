@@ -24,7 +24,7 @@ default_border pixel 1
 
 # gaps
 gaps inner 17
-gaps outer 0
+gaps outer -5
 smart_gaps on
 
 # disable title bars
@@ -245,6 +245,7 @@ bindsym $mod+F8 exec mocp --next
 
 # App shortcuts
 bindsym $mod+w exec firefox
+bindsym $mod+p exec firefox --private-window
 bindsym $mod+s exec flameshot gui
 bindsym $mod+t exec typora
 bindsym $mod+g exec urxvt -e ranger
