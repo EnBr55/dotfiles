@@ -10,6 +10,10 @@ let mapleader = " "
 set tabstop=2
 set shiftwidth=2
 
+" Set thesaurus
+set thesaurus+=/home/ben/.vim/mthesaur.txt
+autocmd FileType markdown,latex,tex,plaintex setlocal spell
+
 " use onedark color scheme, but keep terminal background color
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
@@ -28,7 +32,7 @@ autocmd BufWritePost *.tex Dispatch! latexmk % -pdf
 nmap <F2> :NERDTreeToggle<CR>
 
 " Guides
-inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+"inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
