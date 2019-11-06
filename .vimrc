@@ -12,8 +12,10 @@ set shiftwidth=2
 
 " Set thesaurus
 set thesaurus+=/home/ben/.vim/mthesaur.txt
-autocmd FileType markdown,latex,tex,plaintex setlocal spell
-
+autocmd FileType text,markdown,latex,tex,plaintex setlocal spell
+" Swap gj, j and gk, k for text files
+autocmd FileType text,markdown,latex,tex,plaintex nnoremap j gj
+autocmd FileType text,markdown,latex,tex,plaintex noremap k gk
 " use onedark color scheme, but keep terminal background color
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
@@ -35,6 +37,7 @@ nmap <F2> :NERDTreeToggle<CR>
 "inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
+
 
 " Make explore commands look better
 let g:netrw_banner = 0
