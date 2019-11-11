@@ -25,7 +25,7 @@ default_border pixel 1
 # gaps
 gaps inner 17
 gaps outer -5
-smart_gaps on
+smart_gaps off
 
 # disable title bars
 # for_window [class="^.*"] border pixel 0
@@ -34,7 +34,7 @@ smart_gaps on
 exec_always compton -CGb
 
 # set wallpaper
-exec feh --bg-scale ~/Pictures/Wallpapers/purple2.jpg
+exec feh --bg-scale ~/Pictures/Wallpapers/scifi-landscape2.jpg
 
 # auto-lock on lid close
 exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -o -f
@@ -69,6 +69,7 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+focus_wrapping no
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -175,12 +176,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $bg-color            #2f343f
-set $inactive-bg-color   #2f343f
+set $bg-color            #543c46
+set $inactive-bg-color   #543c46
 set $text-color          #f3f4f5
 set $inactive-text-color #676e7d
 set $urgent-bg-color     #e53935
-set $indicator-color     #e303fc
+set $indicator-color     #7a0435
 
 # set window colors
 #                       border             background         text                 indicator
@@ -226,7 +227,7 @@ bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
 # brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
-		
+
 #bindsym XF86AudioPlay exec playerctl play
 #bindsym XF86AudioPause exec playerctl pause
 #bindsym XF86AudioNext exec playerctl next
