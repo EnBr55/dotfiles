@@ -16,6 +16,8 @@ autocmd FileType text,markdown,latex,tex,plaintex setlocal spell
 " Swap gj, j and gk, k for text files
 autocmd FileType text,markdown,latex,tex,plaintex nnoremap j gj
 autocmd FileType text,markdown,latex,tex,plaintex noremap k gk
+" Remove character limit for syntax highlighting in text files.
+autocmd FileType text,markdown,latex,tex,plaintex set synmaxcol=0
 " use onedark color scheme, but keep terminal background color
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
