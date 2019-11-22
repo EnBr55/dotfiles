@@ -18,6 +18,13 @@ autocmd FileType text,markdown,latex,tex,plaintex nnoremap j gj
 autocmd FileType text,markdown,latex,tex,plaintex noremap k gk
 " Remove character limit for syntax highlighting in text files.
 autocmd FileType text,markdown,latex,tex,plaintex set synmaxcol=0
+" For joplin notes
+autocmd FileType markdown set backupcopy=yes
+
+" Linting and autocompleting stuff
+" Java
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 " use onedark color scheme, but keep terminal background color
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
