@@ -36,7 +36,7 @@ endif
 colorscheme onedark
 
 " Autocompile .tex files to PDF whenever we write to them
-autocmd BufWritePost *.tex Dispatch! latexmk % --pdf -gg -c
+autocmd BufWritePost *.tex Dispatch! pdflatex %
 
 " Key maps
 
