@@ -35,8 +35,8 @@ if (has("autocmd") && !has("gui_running"))
 endif
 colorscheme onedark
 
-" Autocompile .tex files whenever we write to them
-autocmd BufWritePost *.tex Dispatch! latexmk % -pdf
+" Autocompile .tex files to PDF whenever we write to them
+autocmd BufWritePost *.tex Dispatch! latexmk % --pdf -gg -c
 
 " Key maps
 
