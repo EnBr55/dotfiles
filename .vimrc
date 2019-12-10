@@ -2,7 +2,8 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 set number relativenumber
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
+set clipboard^=unnamed
 let g:javascript_plugin_jsdoc = 1
 let mapleader = " "
 
@@ -35,8 +36,8 @@ if (has("autocmd") && !has("gui_running"))
 endif
 colorscheme onedark
 
-" Autocompile .tex files to PDF whenever we write to them
-autocmd BufWritePost *.tex Dispatch! pdflatex %
+" Autocompile .tex files whenever we write to them
+autocmd BufWritePost *.tex Dispatch! latexmk % -pdf
 
 " Key maps
 

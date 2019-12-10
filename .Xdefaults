@@ -32,7 +32,7 @@
 URxvt.intensityStyles:	false
 URxvt.background:       [88]#120512
 URxvt.depth:		32
-URxvt.font:		xft:FiraCode-Regular:size=11,xft:Noto Emoji
+URxvt.font:		xft:FiraCode-Regular:size=14,xft:Noto Emoji, xft:FontAwesome
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
 
