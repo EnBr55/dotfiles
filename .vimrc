@@ -10,6 +10,7 @@ let mapleader = " "
 " Tabs and shiftwidth
 set tabstop=2
 set shiftwidth=2
+set expandtab
 
 " Set thesaurus
 set thesaurus+=/home/ben/.vim/mthesaur.txt
@@ -25,6 +26,9 @@ autocmd FileType markdown set backupcopy=yes
 " Linting and autocompleting stuff
 " Java
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" Typescript
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 " use onedark color scheme, but keep terminal background color
 if (has("autocmd") && !has("gui_running"))
