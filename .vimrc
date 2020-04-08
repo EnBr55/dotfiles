@@ -52,6 +52,9 @@ nmap <F2> :NERDTreeToggle<CR>
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
+" Latex live preview
+nmap <leader>l :silent<space>!pwd<space><bar><space>awk<space>'{print $1"/%"}'<space><bar><space>sed<space>'s/[.].*$/.pdf/'<space><bar><space>xargs<space>evince<space>2>/dev/null<space>&<Enter>
+
 
 " Make explore commands look better
 let g:netrw_banner = 0
