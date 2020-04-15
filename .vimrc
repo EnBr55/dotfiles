@@ -10,6 +10,7 @@ let mapleader = " "
 " Tabs and shiftwidth
 set tabstop=2
 set shiftwidth=2
+set expandtab
 
 " Set thesaurus
 set thesaurus+=/home/ben/.vim/mthesaur.txt
@@ -25,6 +26,9 @@ autocmd FileType markdown set backupcopy=yes
 " Linting and autocompleting stuff
 " Java
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" Typescript
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 " use onedark color scheme, but keep terminal background color
 if (has("autocmd") && !has("gui_running"))
@@ -48,6 +52,9 @@ nmap <F2> :NERDTreeToggle<CR>
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
+" Latex live preview
+nmap <leader>l :silent<space>!pwd<space><bar><space>awk<space>'{print $1"/%"}'<space><bar><space>sed<space>'s/[.].*$/.pdf/'<space><bar><space>xargs<space>evince<space>2>/dev/null<space>&<Enter>
+
 
 " Make explore commands look better
 let g:netrw_banner = 0
@@ -56,3 +63,17 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
+" Make autocomplete nicer
+" select longest common text of all matches (instead of just first match)
+set completeopt=longest,menuone
+" make enter autofill the selection
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" always keep a menu item highlighted
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+" Shortcut ctrl-b to autocomplete
+imap <C-b> <C-X><C-O><C-N>
