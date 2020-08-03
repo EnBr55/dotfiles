@@ -53,7 +53,7 @@ vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
 " Latex live preview
-nmap <leader>l :silent<space>!pwd<space><bar><space>awk<space>'{print $1"/%"}'<space><bar><space>sed<space>'s/[.].*$/.pdf/'<space><bar><space>xargs<space>evince<space>2>/dev/null<space>&<Enter>
+nmap <leader>l :silent<space>!pwd<space><bar><space>awk<space>'{print $1"/%"}'<space><bar><space>sed<space>'s/[.].*$/.pdf/'<space><bar><space>xargs<space>zathura<space>2>/dev/null<space>&<Enter>
 
 
 " Make explore commands look better
@@ -77,3 +77,9 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 
 " Shortcut ctrl-b to autocomplete
 imap <C-b> <C-X><C-O><C-N>
+
+" UltiSnips setup
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
