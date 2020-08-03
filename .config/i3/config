@@ -289,7 +289,7 @@ bindsym $mod+F7 exec mocp --previous
 bindsym $mod+F8 exec mocp --next
 
 # App shortcuts
-bindsym $mod+w exec firefox
+bindsym $mod+w exec qutebrowser
 bindsym $mod+p exec firefox --private-window
 bindsym $mod+s exec flameshot gui
 bindsym $mod+t exec typora
