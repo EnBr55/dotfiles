@@ -12,7 +12,9 @@ settings:
         xt: config-cycle tabs.show always switching
         xx: config-cycle statusbar.hide ;; config-cycle tabs.show always switching
   content.notifications:
+    https://www.facebook.com: false
     https://www.reddit.com: false
+    https://www.youtube.com: true
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: true
   downloads.remove_finished:

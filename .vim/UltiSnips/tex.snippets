@@ -13,3 +13,29 @@ snippet beg "Begin and End" b
 $2
 \end{$1}
 endsnippet
+
+snippet lecturenote "Lecture Note Template" b
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage[margin=3cm]{geometry}
+
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+
+\title{$1}
+\author{Ben Braham}
+\date{`date "+%d/%m/%y"`}
+\makeatletter\let\Title\@title\makeatother
+\begin{document}
+\maketitle
+\hrule
+\vspace{1em}
+\noindent \Title\\\\
+$2
+\vspace{1em}
+\hrule
+\vspace{1em}
+\end{document}
+
+endsnippet
