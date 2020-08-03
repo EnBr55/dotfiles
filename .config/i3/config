@@ -19,24 +19,24 @@ exec setxkbmap -option caps:swapescape
 font pango:monospace 9
 
 # thin borders
+# uncomment bellow for borders
+#
 hide_edge_borders smart
 default_border pixel 1
 
 # gaps
-gaps inner 17
-gaps outer -5
-# smart_gaps off
+# gaps inner 17
+# gaps outer -5
+# smart_gaps on
 
-# disable title bars
-# for_window [class="^.*"] border pixel 0
+# disable borders
+for_window [class="^.*"] border pixel 0
 
 # compton
-exec_always dbus-launch compton -CGb
+# exec_always dbus-launch compton -CGb
+exec_always dbus-launch picom --config /etc/xdg/picom.conf --experimental-backends -bcG
 
-# configure monitors
-exec --no-startup-id /bin/startup
-# set wallpaper
-exec feh --bg-scale ~/Pictures/Wallpapers/earth-space-wallpaper
+
 
 # hide mouse cursor on idle
 exec unclutter --timeout 2 --ignore-scrolling --jitter 5
@@ -244,7 +244,7 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
         #urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
     #}
 #}
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 
 # Power management
 exec "xset s 0 0"
@@ -296,13 +296,24 @@ bindsym $mod+t exec typora
 bindsym $mod+g exec urxvt -e ranger
 # Redirect sound to headphones
 bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
+# Toggle polybar
+bindsym $mod+y exec "bash /home/ben/.config/polybar/toggle.sh"
 
 
 # Autostart apps
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id "compton -cC"
 exec --no-startup-id nm-applet
 # exec --no-startup-id "nitrogen --restore"
-exec --no-startup-id "sleep 2s && kalu"
 # exec --no-startup-id ulauncher
 
+# configure monitors
+
+exec "sleep 0.5 && xrandr --output DP-0 --mode 1920x1080 --rate 144"
+exec "sleep 1 && xrandr --output DVI-D-0 --left-of DP-0 --mode 1600x900 --rate 60"
+exec "sleep 1.5 && xrandr --output HDMI-0 --right-of DP-0 --mode 1920x1080 --rate 60"
+
+# set wallpaper
+exec "sleep 2 && feh --bg-scale ~/Pictures/Wallpapers/forest_sunlight_fog.jpg"
+
+#polybar
+exec no-startup-id "sleep 2 && $HOME/.config/polybar/launch.sh"
