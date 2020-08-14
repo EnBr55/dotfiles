@@ -4,6 +4,14 @@ $1
 \end{equation}
 endsnippet
 
+snippet math "Unnumbered Math Block" b
+\begin{equation*}
+	\begin{aligned}
+		$1
+	\end{aligned}
+\end{equation*}
+endsnippet
+
 snippet pic "Insert image" b
 \includegraphics[width=${1:1}\linewidth]{$2}
 endsnippet
@@ -18,8 +26,9 @@ snippet lecturenote "Lecture Note Template" b
 \documentclass[12pt]{article}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
 \usepackage[margin=3cm]{geometry}
-
+\usepackage{graphicx}
 \usepackage{titlesec}
+\graphicspath{{./resources/}}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
 
