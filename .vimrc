@@ -55,7 +55,7 @@ vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
 " Latex live preview
-nmap <leader>l :silent<space>!pwd<space><bar><space>awk<space>'{print $1"/%"}'<space><bar><space>sed<space>'s/[.].*$/.pdf/'<space><bar><space>xargs<space>zathura<space>2>/dev/null<space>:silent &<Enter>
+nmap <leader>l :silent<space>!pwd<space><bar><space>awk<space>'{print $1"/%"}'<space><bar><space>sed<space>'s/[.].*$/.pdf/'<space><bar><space>xargs<space>zathura<space>2>/dev/null<space>&<Enter>
 
 
 " Make explore commands look better
