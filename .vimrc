@@ -41,8 +41,8 @@ endif
 colorscheme onedark
 
 " Autocompile .tex files whenever we write to them
-autocmd BufWritePost *.tex Dispatch! latexmk % -pdf -interaction=batchmode && latexmk -c
-autocmd BufWritePost *.md Dispatch! pandoc -o %:r.pdf %
+autocmd BufWritePost *.tex silent! Dispatch! latexmk % -pdf -interaction=batchmode && silent! latexmk -c > /tmp/tmplatex.txt || latexmk -c > /tmp/tmplatex.txt
+autocmd BufWritePost *.md silent! Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt
 
 " Key maps
 
@@ -55,7 +55,7 @@ vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
 " Latex live preview
-nmap <leader>l :silent<space>!pwd<space><bar><space>awk<space>'{print $1"/%"}'<space><bar><space>sed<space>'s/[.].*$/.pdf/'<space><bar><space>xargs<space>zathura<space>2>/dev/null<space>&<Enter>
+nmap <leader>l :silent <space>!pwd<space><bar><space>awk<space>'{print $1"/%"}'<space><bar><space>sed<space>'s/[.].*$/.pdf/'<space><bar><space>xargs<space>zathura<space>2>/dev/null<space>&<Enter>
 
 
 " Make explore commands look better
