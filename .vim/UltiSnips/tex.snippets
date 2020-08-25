@@ -4,12 +4,35 @@ $1
 \end{equation}
 endsnippet
 
+snippet arr "Over Right Arrow" b
+\overrightarrow{$1}
+endsnippet
+
 snippet math "Unnumbered Math Block" b
 \begin{equation*}
 	\begin{aligned}
 		$1
 	\end{aligned}
 \end{equation*}
+endsnippet
+
+snippet fig "" b
+\begin{figure}[h]
+	\includegraphics[width=${1:1}\linewidth]{$2}
+	\centering
+	\caption{$3}
+	\label{fig:$2}
+\end{figure}
+endsnippet
+
+snippet wfig "" b
+\begin{wrapfigure}{${1:o}}{${2:0.5}\linewidth}
+	\begin{center}
+		\includegraphics[width=${3:0.5}\linewidth]{$4}
+	\end{center}
+	\caption{$5}
+	\label{fig:$4}
+\end{wrapfigure}
 endsnippet
 
 snippet pic "Insert image" b
@@ -28,6 +51,8 @@ snippet lecturenote "Lecture Note Template" b
 \usepackage[margin=3cm]{geometry}
 \usepackage{graphicx}
 \usepackage{titlesec}
+\usepackage{physics}
+\usepackage{wrapfig}
 \graphicspath{{./resources/}}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
@@ -35,16 +60,11 @@ snippet lecturenote "Lecture Note Template" b
 \title{$1}
 \author{Ben Braham}
 \date{`date "+%d/%m/%y"`}
-\makeatletter\let\Title\@title\makeatother
 \begin{document}
 \maketitle
 \hrule
 \vspace{1em}
-\noindent \Title\\\\
 $2
-\vspace{1em}
-\hrule
-\vspace{1em}
 \end{document}
 
 endsnippet
