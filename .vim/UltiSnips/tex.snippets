@@ -4,8 +4,12 @@ $1
 \end{equation}
 endsnippet
 
-snippet arr "Over Right Arrow" b
+snippet arr "Over Right Arrow" i
 \overrightarrow{$1}
+endsnippet
+
+snippet fr "Fraction" i
+\frac{$1}{$2}
 endsnippet
 
 snippet math "Unnumbered Math Block" b
@@ -14,6 +18,12 @@ snippet math "Unnumbered Math Block" b
 		$1
 	\end{aligned}
 \end{equation*}
+endsnippet
+
+snippet aln "Align" b
+\begin{align*}
+$1
+\end{align*}
 endsnippet
 
 snippet fig "" b
@@ -39,6 +49,10 @@ snippet pic "Insert image" b
 \includegraphics[width=${1:1}\linewidth]{$2}
 endsnippet
 
+snippet pmat "parentheses matrix" i
+\begin{pmatrix}$1\end{pmatrix}
+endsnippet
+
 snippet beg "Begin and End" b
 \begin{$1}
 $2
@@ -52,6 +66,10 @@ snippet lecturenote "Lecture Note Template" b
 \usepackage{graphicx}
 \usepackage{titlesec}
 \usepackage{physics}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241
 \usepackage{wrapfig}
 \graphicspath{{./resources/}}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
@@ -66,5 +84,31 @@ snippet lecturenote "Lecture Note Template" b
 \vspace{1em}
 $2
 \end{document}
+endsnippet
 
+snippet matlabcode "Matlab listings formatting" b
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    basicstyle=\ttfamily\footnotesize,
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+endsnippet
+
+snippet code "code block" b
+\begin{lstlisting}
+$1
+\end{lstlisting}
 endsnippet
