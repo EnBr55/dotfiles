@@ -41,11 +41,20 @@ endif
 colorscheme onedark
 
 " Autocompile .tex files whenever we write to them
-autocmd BufWritePost *.tex silent! Dispatch! latexmk % -pdf -interaction=batchmode && silent! latexmk -c > /tmp/tmplatex.txt || latexmk -c > /tmp/tmplatex.txt
+"autocmd BufWritePost *.tex silent! Dispatch! latexmk % -pdf -pvc -view=none -interaction=batchmode 
+"autocmd BufWritePost *.tex silent! Dispatch! latexmk -c > /tmp/tmplatex.txt
+"&& silent! latexmk -c > /tmp/tmplatex.txt || latexmk -c > /tmp/tmplatex.txt
+"autocmd BufWritePost *.tex silent! Dispatch! latexmk -c > /tmp/tmplatex.txt
+"
+
+autocmd BufWritePost *.tex silent! Dispatch! latexmk % -pdf -interaction=batchmode 
+"autocmd BufReadPost,BufNewfile *.tex silent! Dispatch! latexmk % -pdf -pvc -interaction=batchmode -view=none
+autocmd VimLeave *.tex !latexmk % -pdf -interaction=batchmode ; latexmk -c > /tmp/tmplatex.txt
 autocmd BufWritePost *.md silent! Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt
 
 " Key maps
 
+nmap <leader>c :Dispatch! latexmk % -pdf -pvc -interaction=batchmode
 nmap <F2> :NERDTreeToggle<CR>
 nmap <leader>a :ALEToggle<Enter>
 
