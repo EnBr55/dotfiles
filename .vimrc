@@ -6,6 +6,33 @@ set number relativenumber
 set clipboard^=unnamed
 let g:javascript_plugin_jsdoc = 1
 let mapleader = " "
+let g:airline_theme='one'
+
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+"colorscheme one
+"set background=dark
+"set background=light
+" set background=dark " for the dark version
+"set background=light " for the light version
+"
+
+"call one#highlight('vimLineComment', '9f9f9f', '', 'none')
+"call one#highlight('vimLineComment', '9f9f9f', '', 'none')
+"call one#highlight('Comment', '9f9f9f', '', 'none')
+"
+"call one#highlight('*', '', '' none)
 
 " Tabs and shiftwidth
 set tabstop=2
@@ -38,7 +65,16 @@ if (has("autocmd") && !has("gui_running"))
     autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
   augroup END
 endif
+
+" Find color names here: https://github.com/joshdick/onedark.vim/blob/master/colors/onedark.vim
+let g:onedark_color_overrides = {
+\ "comment_grey": {"gui": "#9f9f9f", "cterm": "235", "cterm16": "0" },
+\ "gutter_fg_grey": {"gui": "#9f9f9f", "cterm": "235", "cterm16": "0" }
+\}
+
 colorscheme onedark
+
+call onedark#extend_highlight('Comment', {})
 
 " Autocompile .tex files whenever we write to them
 "autocmd BufWritePost *.tex silent! Dispatch! latexmk % -pdf -pvc -view=none -interaction=batchmode 
@@ -47,7 +83,7 @@ colorscheme onedark
 "autocmd BufWritePost *.tex silent! Dispatch! latexmk -c > /tmp/tmplatex.txt
 "
 
-autocmd BufWritePost *.tex silent! Dispatch! latexmk % -pdf -interaction=batchmode 
+autocmd BufWritePost *.tex silent! Dispatch! latexmk % -pdf -interaction=batchmode > /tmp/tmplatex.txt
 "autocmd BufReadPost,BufNewfile *.tex silent! Dispatch! latexmk % -pdf -pvc -interaction=batchmode -view=none
 autocmd VimLeave *.tex !latexmk % -pdf -interaction=batchmode ; latexmk -c > /tmp/tmplatex.txt
 autocmd BufWritePost *.md silent! Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt
@@ -89,8 +125,17 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 " Shortcut ctrl-b to autocomplete
 imap <C-b> <C-X><C-O><C-N>
 
+hi Normal guibg=NONE ctermbg=NONE
+
 " UltiSnips setup
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
+
+let g:tex_flavor='latex'
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
+nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>

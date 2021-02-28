@@ -73,11 +73,22 @@ snippet lecturenote "Lecture Note Template" b
 \usepackage{listings}
 \usepackage{color}
 \usepackage{wrapfig}
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
 \graphicspath{{./resources/}}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
 
 \title{$1}
 \author{Ben Braham}
@@ -115,4 +126,35 @@ snippet code "code block" b
 \begin{lstlisting}
 $1
 \end{lstlisting}
+endsnippet
+
+snippet box "Box"
+`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
+│ $1 │
+`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
+$0
+endsnippet
+
+snippet lr "Left and Right" iA
+\left( $1 \right)
+endsnippet
+
+priority 2
+snippet [lr "Left and Right" iA
+\left[ $1 \right]
+endsnippet
+
+snippet int "Integral" i
+\int_{$1}^{$2}
+endsnippet
+
+snippet table "Table environment" b
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
+	\begin{tabular}{${5:c}}
+	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{tabular}
+\end{table}
 endsnippet
