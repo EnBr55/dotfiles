@@ -82,8 +82,8 @@ call onedark#extend_highlight('Comment', {})
 "&& silent! latexmk -c > /tmp/tmplatex.txt || latexmk -c > /tmp/tmplatex.txt
 "autocmd BufWritePost *.tex silent! Dispatch! latexmk -c > /tmp/tmplatex.txt
 "
-
-autocmd BufWritePost *.tex silent! Dispatch! latexmk % -pdf -interaction=batchmode > /tmp/tmplatex.txt
+autocmd BufEnter *.tex let b:dispatch='latexmk % -pdf -interaction=batchmode > /tmp/tmplatex.txt'
+autocmd BufWritePost *.tex silent! Dispatch! 
 "autocmd BufReadPost,BufNewfile *.tex silent! Dispatch! latexmk % -pdf -pvc -interaction=batchmode -view=none
 autocmd VimLeave *.tex !latexmk % -pdf -interaction=batchmode ; latexmk -c > /tmp/tmplatex.txt
 autocmd BufWritePost *.md silent! Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt
