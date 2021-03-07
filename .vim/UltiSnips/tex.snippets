@@ -65,6 +65,7 @@ endsnippet
 
 snippet lecturenote "Lecture Note Template" b
 \documentclass[12pt]{article}
+\usepackage{bookmark}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
 \usepackage[margin=3cm]{geometry}
 \usepackage{graphicx}
@@ -78,7 +79,7 @@ snippet lecturenote "Lecture Note Template" b
 \usepackage{pdfpages}
 \usepackage{transparent}
 \usepackage{xcolor}
-\graphicspath{{./resources/}}
+\graphicspath{{./figures/}}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
@@ -95,6 +96,10 @@ snippet lecturenote "Lecture Note Template" b
 \author{Ben Braham}
 \date{`date "+%d/%m/%y"`}
 \begin{document}
+\makeatletter
+\let\inserttitle\@title
+\makeatother
+\bookmark[dest=TitlePage]{\inserttitle}
 \maketitle
 \hrule
 \vspace{1em}
@@ -143,6 +148,11 @@ endsnippet
 priority 2
 snippet [lr "Left and Right" iA
 \left[ $1 \right]
+endsnippet
+
+priority 2
+snippet { "Closing and opening {" i
+{$1}
 endsnippet
 
 snippet int "Integral" i
