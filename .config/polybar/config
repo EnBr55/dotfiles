@@ -18,12 +18,12 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #00222222
+background = #FF11121D
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 ;foreground = #dfdfdf
-foreground = #212
-foreground-alt = #555
+foreground = #a0a8cd
+foreground-alt = #bb9
 primary = #ffb52a
 secondary = #e60053
 alert = #ed1c30
@@ -54,21 +54,16 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-;font-1 = FontAwesome5Free:style=Solid:size=10;4
-;font-2 = FontAwesome5Free:style=Regular:size=10;4
-;font-3 = FontAwesome5Brands:style=Regular:size=10;4
-;font-0 = FontAwesome5Free:size=10;0
-font-0 = "Fira Code:style=Retina;pixelsize=12;3"
-;font-2 = fixed:pixelsize=12:weight=bold;3
-font-1 = Font Awesome 5 Free:pixelsize=12;2
-font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
-font-3 = Font Awesome 5 Brands:pixelsize=12;2
-font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-0 = Fira Code:pixelsize=11;3
+font-1 = Font Awesome 5 Free:pixelsize=10;2
+font-2 = Font Awesome 5 Free Solid:pixelsize=10;2
+font-3 = Font Awesome 5 Brands:pixelsize=10;2
+font-4 = unifont:fontformat=truetype:size=10:antialias=false;0
 font-5 = siji:pixelsize=10;1
 
 modules-left = i3 
 modules-center = mpd xwindow
-modules-right = filesystem battery pulseaudio gmail memory cpu wlan eth temperature date 
+modules-right = filesystem pulseaudio gmail memory cpu eth temperature date 
 
 tray-position = right
 tray-padding = 2
@@ -103,7 +98,7 @@ click-left = xdg-open https://mail.google.com
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:50:...%
+label = %title:0:70:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -162,19 +157,19 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused-background = #777
 label-focused-underline= ${colors.secondary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused-padding = 1.65
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -255,7 +250,7 @@ interface = net1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+;format-connected-underline = #9f78e1
 label-connected = %essid%
 
 format-disconnected =
@@ -276,7 +271,7 @@ type = internal/network
 interface = eno1
 interval = 3.0
 
-format-connected-underline = #55aa55
+;format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
