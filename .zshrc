@@ -98,15 +98,18 @@ alias pytest="cd ~; : > testing.py; vim testing.py"
 alias fuck='sudo $(fc -ln -1)'
 alias npmcode='code . && npm start'
 alias i3config='vim ~/.config/i3/config'
-alias testing='cd ~/Documents/Programming/Testing && rm -r ~/Documents/Programming/Testing/*'      
+alias testing='cd ~/Documents/temp/code && rm -r ~/Documents/temp/code/*'      
 alias uni='cd ~/Documents/University/Courses/Units'
 alias haguichi='sudo systemctl start logmein-hamachi.service && haguichi'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # Open new terminal in same location
 alias nt='urxvt &'
 alias sqa='cd ~/Dropbox/Uni/SQA-Project/workbook'
-alias cdu='cd ~/Dropbox/Uni/Units'
 alias cdp='cd ~/Uni/Units/INFO2222/info2222_project'
+alias cdu='cd ~/Dropbox/Uni/Units'
+alias timetable='feh ~/Dropbox/Uni/timetable.png &'
+alias vpn='sudo openconnect vpn.sydney.edu.au'
+alias qpy='bash ~/qpy.sh'
 # Example aliases 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -114,3 +117,7 @@ alias cdp='cd ~/Uni/Units/INFO2222/info2222_project'
 export BROWSER=firefox
 #export PATH=/opt/anaconda/bin:$PATH
 export TERMINFO=/usr/share/terminfo
+
+export APT_HOME=/Applications/APT_v2.8.3
+export PATH=$APT_HOME:$PATH
+export APT_ARCH=LINUX

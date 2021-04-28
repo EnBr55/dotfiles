@@ -39,6 +39,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+autocmd FileType c set tabstop=4
+autocmd FileType c set shiftwidth=4
+
 " Set thesaurus
 set thesaurus+=/home/ben/.vim/mthesaur.txt
 autocmd FileType text,markdown,latex,tex,plaintex setlocal spell
@@ -142,3 +145,24 @@ let g:tex_conceal='abdmg'
 
 inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
 nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
+
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
+
+" Vim default
+let g:Hexokinase_highlighters = [ 'sign_column', 'backgroundfull' ]
+
+" Patterns to match for all filetypes
+" Can be a comma separated string or a list of strings
+" Default value:
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names'
+
+" Filetype specific patterns to match
+" entry value must be comma seperated list
+let g:Hexokinase_ftOptInPatterns = {
+\     'css': 'full_hex,rgb,rgba,hsl,hsla,colour_names',
+\     'html': 'full_hex,rgb,rgba,hsl,hsla,colour_names'
+\ }
+
+" Sample value, to keep default behaviour don't define this variable
+" let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
