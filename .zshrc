@@ -62,9 +62,13 @@ ZSH_THEME="lambda"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose zsh-syntax-highlighting)
+plugins=(git docker docker-compose zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
+source $ZSH/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+
+# removing delay for entering insert mode
+KEYTIMEOUT=1
 
 # User configuration
 
@@ -72,6 +76,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_AU.UTF-8
+export EDITOR='vim'
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -92,7 +97,6 @@ alias o="xdg-open"
 alias pytest="cd ~; : > testing.py; vim testing.py"
 alias fuck='sudo $(fc -ln -1)'
 alias npmcode='code . && npm start'
-alias crack='python ~/Documents/Programming/Python/crack.py'
 alias i3config='vim ~/.config/i3/config'
 alias testing='cd ~/Documents/Programming/Testing && rm -r ~/Documents/Programming/Testing/*'      
 alias uni='cd ~/Documents/University/Courses/Units'
@@ -100,10 +104,13 @@ alias haguichi='sudo systemctl start logmein-hamachi.service && haguichi'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # Open new terminal in same location
 alias nt='urxvt &'
-alias cdi='cd ~/Uni/Units/INFO1112/lecs'
+alias sqa='cd ~/Dropbox/Uni/SQA-Project/workbook'
+alias cdu='cd ~/Dropbox/Uni/Units'
+alias cdp='cd ~/Uni/Units/INFO2222/info2222_project'
 # Example aliases 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# make sure React projects open in Firefox
 export BROWSER=firefox
+#export PATH=/opt/anaconda/bin:$PATH
+export TERMINFO=/usr/share/terminfo
