@@ -21,26 +21,13 @@ if (empty($TMUX))
   endif
 endif
 
-"colorscheme one
-"set background=dark
-"set background=light
-" set background=dark " for the dark version
-"set background=light " for the light version
-"
-
-"call one#highlight('vimLineComment', '9f9f9f', '', 'none')
-"call one#highlight('vimLineComment', '9f9f9f', '', 'none')
-"call one#highlight('Comment', '9f9f9f', '', 'none')
-"
-"call one#highlight('*', '', '' none)
-
 " Tabs and shiftwidth
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-autocmd FileType c set tabstop=4
-autocmd FileType c set shiftwidth=4
+autocmd FileType c set tabstop=2
+autocmd FileType c set shiftwidth=2
 
 " Set thesaurus
 set thesaurus+=/home/ben/.vim/mthesaur.txt
@@ -85,15 +72,26 @@ call onedark#extend_highlight('Comment', {})
 "&& silent! latexmk -c > /tmp/tmplatex.txt || latexmk -c > /tmp/tmplatex.txt
 "autocmd BufWritePost *.tex silent! Dispatch! latexmk -c > /tmp/tmplatex.txt
 "
-autocmd BufEnter *.tex let b:dispatch='latexmk % -pdf -pvc -interaction=batchmode'
-autocmd BufWritePost *.tex silent! Dispatch! 
 "autocmd BufReadPost,BufNewfile *.tex silent! Dispatch! latexmk % -pdf -pvc -interaction=batchmode -view=none
-autocmd VimLeave *.tex !latexmk % -pdf -interaction=batchmode ; latexmk -c > /tmp/tmplatex.txt
-autocmd BufWritePost *.md silent! Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt
+"
+
+" manual .tex stuff
+"autocmd BufEnter *.tex let b:dispatch='latexmk % -pdf -pvc -interaction=batchmode'
+"autocmd BufWritePost *.tex silent! Dispatch! 
+"autocmd VimLeave *.tex !latexmk % -pdf -interaction=batchmode ; latexmk -c > /tmp/tmplatex.txt
+"autocmd BufWritePost *.md silent! Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt
+
+" write to buffer and compile markdown to pdf
+nmap <leader>m :w | Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt
+
+
+autocmd VimLeave *.tex :VimtexClean
 
 " Key maps
 
-nmap <leader>c :Dispatch! latexmk % -pdf -pvc -interaction=batchmode
+"nmap <leader>c :Dispatch! latexmk % -pdf -pvc -interaction=batchmode
+nmap <leader>c :VimtexCompile<Enter>
+nmap <leader>e :VimtexErrors<Enter>
 nmap <F2> :NERDTreeToggle<CR>
 nmap <leader>a :ALEToggle<Enter>
 
@@ -105,13 +103,6 @@ map <leader><leader> <Esc>/<++><Enter>"_c4l
 " Latex live preview
 nmap <leader>l :silent <space>!pwd<space><bar><space>awk<space>'{print $1"/%"}'<space><bar><space>sed<space>'s/[.].*$/.pdf/'<space><bar><space>xargs<space>zathura<space>2>/dev/null<space>&<Enter>
 
-
-" Make explore commands look better
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
 
 " Make autocomplete nicer
 " select longest common text of all matches (instead of just first match)
@@ -139,6 +130,9 @@ let g:UltiSnipsEditSplit="vertical"
 let g:tex_flavor='latex'
 set conceallevel=1
 let g:tex_conceal='abdmg'
+let g:vimtex_latexmk_continuous = 1
+let g:vimtex_quickfix_open_on_warning = 0
+let g:vimtex_view_method="zathura"
 
 inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
 nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
@@ -160,6 +154,3 @@ let g:Hexokinase_ftOptInPatterns = {
 \     'css': 'full_hex,rgb,rgba,hsl,hsla,colour_names',
 \     'html': 'full_hex,rgb,rgba,hsl,hsla,colour_names'
 \ }
-
-" Sample value, to keep default behaviour don't define this variable
-" let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
