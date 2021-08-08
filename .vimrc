@@ -40,6 +40,9 @@ autocmd FileType text,markdown,latex,tex,plaintex set synmaxcol=0
 " For joplin notes
 autocmd FileType markdown set backupcopy=yes
 
+autocmd FileType c set tabstop=4
+autocmd FileType c set shiftwidth=4
+
 " Linting and autocompleting stuff
 " Java
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
