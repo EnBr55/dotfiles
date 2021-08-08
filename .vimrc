@@ -82,7 +82,7 @@ call onedark#extend_highlight('Comment', {})
 "autocmd BufWritePost *.md silent! Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt
 
 " write to buffer and compile markdown to pdf
-nmap <leader>m :w | Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt
+nmap <leader>m :w \| Dispatch! pandoc -o %:r.pdf % > /tmp/tmplatex.txt<Enter>
 
 
 autocmd VimLeave *.tex :VimtexClean
