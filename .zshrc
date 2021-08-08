@@ -103,6 +103,8 @@ alias cdu='cd ~/Dropbox/Uni/Units'
 alias timetable='feh ~/Dropbox/Uni/timetable.png &'
 alias vpn='sudo openconnect vpn.sydney.edu.au'
 alias qpy='bash ~/qpy.sh'
+alias py='ipython --TerminalInteractiveShell.editing_mode=vi'
+alias c='calcurse -D ~/Dropbox/Uni/calendar/calcurse'
 # Example aliases 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
