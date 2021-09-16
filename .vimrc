@@ -157,3 +157,17 @@ let g:Hexokinase_ftOptInPatterns = {
 \     'css': 'full_hex,rgb,rgba,hsl,hsla,colour_names',
 \     'html': 'full_hex,rgb,rgba,hsl,hsla,colour_names'
 \ }
+
+function! g:goyo_before()
+  let b:quitting = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+endfunction
+
+function! g:goyo_after()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    qa
+  endif
+endfunction
+
+let g:goyo_callbacks = [function('g:goyo_before'), function('g:goyo_after')]
