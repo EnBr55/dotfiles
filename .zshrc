@@ -65,7 +65,7 @@ ZSH_THEME="lambda"
 plugins=(git docker docker-compose zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
-source $ZSH/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # removing delay for entering insert mode
 KEYTIMEOUT=1
@@ -94,7 +94,6 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 alias o="xdg-open"
-alias pytest="cd ~; : > testing.py; vim testing.py"
 alias fuck='sudo $(fc -ln -1)'
 alias npmcode='code . && npm start'
 alias i3config='vim ~/.config/i3/config'
@@ -112,9 +111,13 @@ alias vpn='sudo openconnect vpn.sydney.edu.au'
 alias qpy='bash ~/qpy.sh'
 alias py='ipython --TerminalInteractiveShell.editing_mode=vi'
 alias c='calcurse -D ~/Dropbox/Uni/calendar/calcurse'
-# Example aliases 
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias jrl='~/jrl.sh'
+alias cam='vlc v4l2://:input-slave=alsa://:v4l-vdev="/dev/video0"'
+alias plan='vim ~/Dropbox/Uni/plan.md'
+alias cdq='cd ~/Dropbox/Uni/Quantum'
+alias qn='vim ~/Dropbox/Uni/Quantum/global_notes.md'
+alias pi='pip install --user'
+alias todo='~/todo.sh'
 
 export BROWSER=firefox
 #export PATH=/opt/anaconda/bin:$PATH
@@ -123,3 +126,43 @@ export TERMINFO=/usr/share/terminfo
 export APT_HOME=/Applications/APT_v2.8.3
 export PATH=$APT_HOME:$PATH
 export APT_ARCH=LINUX
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+#
+phys() {
+  __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+          . "/opt/anaconda/etc/profile.d/conda.sh"
+      else
+          export PATH="/opt/anaconda/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+  conda activate physics
+}
+
+qutip-dev() {
+  __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+          . "/opt/anaconda/etc/profile.d/conda.sh"
+      else
+          export PATH="/opt/anaconda/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+  conda activate qutip-dev
+}
+# <<< conda initialize <<<
+
+ export PATH="$HOME/.dynamic-colors/bin:$PATH"
+ source $HOME/.dynamic-colors/completions/dynamic-colors.zsh
+ alias theme='~/Scripts/theme.sh'
+ alias themes='dynamic-colors list'
+ dynamic-colors switch $(cat ~/.theme)
